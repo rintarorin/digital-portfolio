@@ -3,135 +3,480 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cybersecurity portfolio of Eldrin David Asuncion — Security Analyst candidate based in Toronto, ON." />
   <title>Eldrin David Asuncion | Cybersecurity Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #0a0d0f;
+      --bg2:       #0f1317;
+      --bg3:       #141a1f;
+      --border:    #1e2830;
+      --accent:    #00e5a0;
+      --accent2:   #0077ff;
+      --text:      #c8d6e0;
+      --text-dim:  #5a7080;
+      --text-bright: #eaf4ff;
+      --card:      #111820;
+      --tag-bg:    #0d1e2a;
+      --font-mono: 'IBM Plex Mono', monospace;
+      --font-sans: 'Space Grotesk', sans-serif;
+    }
 
-  <!-- Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700&display=swap"
-    rel="stylesheet"
-  />
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css" />
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,119,255,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 90% 80%, rgba(0,229,160,0.04) 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 56px;
+      background: rgba(10,13,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-decoration: none;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 2.5rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+      opacity: 0.85;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      font-weight: 700;
+      color: var(--text-bright);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text);
+      max-width: 600px;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .hero-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.6rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-contact a, .hero-contact span {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .hero-contact a:hover { color: var(--accent); }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--accent);
+      border: none;
+      padding: 0.75rem 1.8rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      opacity: 0.8;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── SKILLS GRID ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .skill-card:hover { border-color: rgba(0,229,160,0.3); }
+
+    .skill-card-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.22rem 0.65rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── EXPERIENCE / EDUCATION CARDS ── */
+    .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .entry-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      padding: 1.6rem 1.8rem;
+      transition: border-color 0.2s;
+    }
+    .entry-card:hover { border-color: var(--accent); border-left-color: var(--accent); }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .entry-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-bright);
+    }
+
+    .entry-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+
+    .entry-org {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .entry-card ul {
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .entry-card li {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── CERTS GRID ── */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .cert-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      transition: border-color 0.2s;
+    }
+    .cert-card:hover { border-color: rgba(0,229,160,0.3); }
+    .cert-card.obtained { border-left: 3px solid var(--accent); }
+
+    .cert-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-bright);
+    }
+
+    .cert-status {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+    }
+    .cert-status.done { color: var(--accent); }
+    .cert-status.wip  { color: var(--text-dim); }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+    .section-divider hr {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text-bright);
+      background: transparent;
+      border: 1px solid var(--accent);
+      padding: 0.75rem 1.8rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .download-btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+    .download-btn svg {
+      width: 14px; height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { gap: 1.2rem; }
+      section { padding: 4rem 1.2rem; }
+      .hero { padding: 6rem 1.2rem 3rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ── Navigation ──────────────────────────────────────── -->
+  <!-- NAV -->
   <nav>
-    <div class="nav-brand"><span>//</span> ELDRINDAVID.SEC</div>
+    <span class="nav-logo">// ELDRINDAVID.SEC</span>
     <ul class="nav-links">
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#certifications">Certs</a></li>
     </ul>
-    <!-- <div class="status-dot">
-      <div class="dot"></div>AVAILABLE FOR HIRE
-    </div> -->
   </nav>
 
-  <!-- ── Hero ─────────────────────────────────────────────── -->
-  <section id="hero">
-    <div class="hero-bg-circle"></div>
-    <div class="hero-bg-circle2"></div>
-
-    <div class="hero-content">
-      <div class="hero-tag fade-up delay-1">Security Analyst Candidate</div>
-      <h1 class="fade-up delay-2"><span class="highlight"> Eldrin David</span><br>Asuncion</h1>
-      <div class="hero-title fade-up delay-3">Cybersecurity Specialist</div>
-      <p class="hero-desc fade-up delay-4">
-        Computer Engineering graduate pursuing a Post-Graduate Certificate in Cybersecurity at George Brown College.
-        Building specialized expertise in network security, threat detection, and incident response — driven by an
-        analytical mindset and hands-on lab experience.
-      </p>
-      <div class="hero-contacts fade-up delay-5">
-        <span class="contact-chip">📍 Toronto, ON</span>
-        <a href="tel:6475097186"                              class="contact-chip">📞 (647) 509-7186</a>
-        <a href="mailto:eldrindavid.asuncion@georgebrown.ca"  class="contact-chip">✉ georgebrown.ca</a>
-        <a href="https://linkedin.com/in/eldrindavidasuncion/" target="_blank" rel="noopener" class="contact-chip">🔗 LinkedIn</a>
-      </div>
-      <a href="mailto:eldrindavid.asuncion@georgebrown.ca" class="hero-cta fade-up delay-6">
-        Contact Me →
-      </a>
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-eyebrow">Security Analyst Candidate</p>
+    <h1>Eldrin David<br>Asuncion</h1>
+    <p class="hero-desc">
+      Computer Engineering graduate pursuing a Post-Graduate Certificate in Cybersecurity at George Brown College.
+      Building specialized expertise in network security, threat detection, and incident response — driven by an
+      analytical mindset and hands-on lab experience.
+    </p>
+    <div class="hero-contact">
+      <span>Toronto, ON</span>
+      <a href="tel:6475097186">(647) 509-7186</a>
+      <a href="mailto:eldrindavid.asuncion@georgebrown.ca">eldrindavid.asuncion@georgebrown.ca</a>
+      <a href="https://linkedin.com/in/eldrindavidasuncion/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
+    <a href="mailto:eldrindavid.asuncion@georgebrown.ca" class="btn-primary">Contact Me →</a>
+  </div>
 
-    <!-- Decorative hex grid -->
-    <div class="hex-grid" aria-hidden="true">
-      <div class="hex active">🔐</div><div class="hex">00</div><div class="hex active">██</div><div class="hex">FF</div><div class="hex">00</div>
-      <div class="hex">01</div><div class="hex active">🛡</div><div class="hex">AB</div><div class="hex active">CD</div><div class="hex">EF</div>
-      <div class="hex active">🔍</div><div class="hex">10</div><div class="hex">11</div><div class="hex active">██</div><div class="hex">00</div>
-      <div class="hex">FE</div><div class="hex active">DC</div><div class="hex">BA</div><div class="hex">98</div><div class="hex active">76</div>
-      <div class="hex">54</div><div class="hex">32</div><div class="hex active">🌐</div><div class="hex">10</div><div class="hex active">CF</div>
-    </div>
-  </section>
-
-  <!-- ── Skills ───────────────────────────────────────────── -->
+  <!-- SKILLS -->
   <section id="skills">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2>Technical Skills</h2>
-      <div class="section-line"></div>
-    </div>
+    <p class="section-label">01</p>
+    <h2 class="section-title">Technical Skills</h2>
     <div class="skills-grid">
 
       <div class="skill-card">
-        <div class="skill-card-icon">🛡️</div>
-        <h3>Security &amp; Networking</h3>
-        <div class="skill-tags">
-          <span class="tag">TCP/IP</span><span class="tag">Subnetting</span><span class="tag">VLANs</span>
-          <span class="tag">VPN</span><span class="tag">Firewalls</span><span class="tag">IDS/IPS</span>
-          <span class="tag">DNS/DHCP</span><span class="tag">HTTP/S</span><span class="tag">SSH</span>
+        <p class="skill-card-title">Security &amp; Networking</p>
+        <div class="tags">
+          <span class="tag">TCP/IP</span>
+          <span class="tag">Subnetting</span>
+          <span class="tag">VLANs</span>
+          <span class="tag">VPN</span>
+          <span class="tag">Firewalls</span>
+          <span class="tag">IDS/IPS</span>
+          <span class="tag">DNS/DHCP</span>
+          <span class="tag">HTTP/S</span>
+          <span class="tag">SSH</span>
           <span class="tag">Incident Response</span>
         </div>
       </div>
 
       <div class="skill-card">
-        <div class="skill-card-icon">🔍</div>
-        <h3>Security Tools</h3>
-        <div class="skill-tags">
-          <span class="tag">Wireshark</span><span class="tag">SIEM (Sumo Logic)</span>
-          <span class="tag">Cisco Packet Tracer</span><span class="tag">Log Analysis</span>
-          <span class="tag">Traffic Analysis</span><span class="tag">Threat Detection</span>
+        <p class="skill-card-title">Security Tools</p>
+        <div class="tags">
+          <span class="tag">Wireshark</span>
+          <span class="tag">SIEM (Sumo Logic)</span>
+          <span class="tag">Cisco Packet Tracer</span>
+          <span class="tag">Log Analysis</span>
+          <span class="tag">Traffic Analysis</span>
+          <span class="tag">Threat Detection</span>
         </div>
       </div>
 
       <div class="skill-card">
-        <div class="skill-card-icon">💻</div>
-        <h3>Systems &amp; Cloud</h3>
-        <div class="skill-tags">
-          <span class="tag">Windows Server 2019</span><span class="tag">Active Directory</span>
-          <span class="tag">VMware</span><span class="tag">VirtualBox</span>
-          <span class="tag">Azure Fundamentals</span><span class="tag">Linux</span>
+        <p class="skill-card-title">Systems &amp; Cloud</p>
+        <div class="tags">
+          <span class="tag">Windows Server 2019</span>
+          <span class="tag">Active Directory</span>
+          <span class="tag">VMware</span>
+          <span class="tag">VirtualBox</span>
+          <span class="tag">Azure Fundamentals</span>
+          <span class="tag">Linux</span>
         </div>
       </div>
 
       <div class="skill-card">
-        <div class="skill-card-icon">⌨️</div>
-        <h3>Programming &amp; Scripting</h3>
-        <div class="skill-tags">
-          <span class="tag">PowerShell</span><span class="tag">Bash</span><span class="tag">C#</span>
-          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Java</span>
-          <span class="tag">HTML/CSS</span><span class="tag">Git/GitHub</span>
+        <p class="skill-card-title">Programming &amp; Scripting</p>
+        <div class="tags">
+          <span class="tag">PowerShell</span>
+          <span class="tag">Bash</span>
+          <span class="tag">C#</span>
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Java</span>
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">Git/GitHub</span>
         </div>
       </div>
 
       <div class="skill-card">
-        <div class="skill-card-icon">🔧</div>
-        <h3>Development Tools</h3>
-        <div class="skill-tags">
-          <span class="tag">Visual Studio</span><span class="tag">VS Code</span>
-          <span class="tag">REST API</span><span class="tag">.NET</span>
+        <p class="skill-card-title">Development Tools</p>
+        <div class="tags">
+          <span class="tag">Visual Studio</span>
+          <span class="tag">VS Code</span>
+          <span class="tag">REST API</span>
+          <span class="tag">.NET</span>
           <span class="tag">Git</span>
         </div>
       </div>
 
       <div class="skill-card">
-        <div class="skill-card-icon">📋</div>
-        <h3>Soft Skills</h3>
-        <div class="skill-tags">
-          <span class="tag">Root Cause Analysis</span><span class="tag">Documentation</span>
-          <span class="tag">Incident Triage</span><span class="tag">Team Collaboration</span>
+        <p class="skill-card-title">Soft Skills</p>
+        <div class="tags">
+          <span class="tag">Root Cause Analysis</span>
+          <span class="tag">Documentation</span>
+          <span class="tag">Incident Triage</span>
+          <span class="tag">Team Collaboration</span>
           <span class="tag">Prioritization</span>
         </div>
       </div>
@@ -139,83 +484,89 @@
     </div>
   </section>
 
-  <!-- ── Experience ───────────────────────────────────────── -->
+  <div class="section-divider"><hr></div>
+
+  <!-- EXPERIENCE -->
   <section id="experience">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <h2>Experience</h2>
-      <div class="section-line"></div>
-    </div>
+    <p class="section-label">02</p>
+    <h2 class="section-title">Experience</h2>
     <div class="timeline">
 
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <div class="timeline-role">Associate Software Engineer</div>
-          <div class="timeline-date">Apr 2025 – Dec 2025</div>
+      <div class="entry-card">
+        <div class="entry-header">
+          <span class="entry-title">Associate Software Engineer</span>
+          <span class="entry-date">Apr 2025 – Dec 2025</span>
         </div>
-        <div class="timeline-company">Accenture · Philippines</div>
-        <ul class="timeline-bullets">
+        <p class="entry-org">Accenture · Philippines</p>
+        <ul>
           <li>Automated repetitive tasks with PowerShell scripting, reducing manual effort by 80% and improving operational efficiency.</li>
           <li>Identified and resolved bugs in automation scripts, maintaining system reliability and consistent workflow execution.</li>
           <li>Collaborated with team members to test, document, and improve scripts and system workflows to ensure reliability and consistency.</li>
+          <li>Assisted in troubleshooting system and deployment issues, reducing downtime and improving system performance.</li>
+          <li>Applied scripting and automation best practices to improve efficiency and maintainability of internal tools.</li>
         </ul>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <div class="timeline-role">Customer Service Representative</div>
-          <div class="timeline-date">Jul 2023 – Mar 2024</div>
+      <div class="entry-card">
+        <div class="entry-header">
+          <span class="entry-title">Customer Service Representative</span>
+          <span class="entry-date">Jul 2024 – Mar 2024</span>
         </div>
-        <div class="timeline-company">ePerformax Contact Centers and BPO · Philippines</div>
-        <ul class="timeline-bullets">
+        <p class="entry-org">ePerformax Contact Centers and BPO · Philippines</p>
+        <ul>
           <li>Managed 60+ daily cases with strong incident triaging, prioritization, and record-keeping — skills directly applicable to SOC analyst roles.</li>
           <li>Investigated operational issues through systematic root cause analysis and cross-team escalation processes.</li>
           <li>Handled sensitive customer data in strict compliance with company policies, ensuring confidentiality and regulatory adherence.</li>
           <li>Translated complex technical and operational issues into clear, accessible communications for stakeholders.</li>
+          <li>Used internal systems and CRM tools efficiently to track, update, and resolve customer issues in real time.</li>
         </ul>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <div class="timeline-role">Graphic Designer</div>
-          <div class="timeline-date">Jan 2019 – Jan 2020</div>
+      <div class="entry-card">
+        <div class="entry-header">
+          <span class="entry-title">Graphic Designer</span>
+          <span class="entry-date">Jan 2019 – Jan 2020</span>
         </div>
-        <div class="timeline-company">ClutchPoint Inc.</div>
-        <ul class="timeline-bullets">
+        <p class="entry-org">ClutchPoint Inc.</p>
+        <ul>
           <li>Managed digital assets for public platforms with a focus on data integrity and secure content handling procedures.</li>
           <li>Adhered to strict editorial guidelines and workflows, building discipline in following policies and quality standards.</li>
           <li>Operated in high-velocity, deadline-driven environments, developing precision and attention to detail.</li>
+          <li>Collaborated with team members to meet deadlines, strengthening communication skills.</li>
         </ul>
       </div>
 
     </div>
   </section>
 
-  <!-- ── Education ────────────────────────────────────────── -->
-  <section id="education">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <h2>Education</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="edu-grid">
+  <div class="section-divider"><hr></div>
 
-      <div class="edu-card">
-        <div class="edu-degree">Post-Graduate Certificate — Cybersecurity</div>
-        <div class="edu-school">George Brown College · Toronto, ON</div>
-        <div class="edu-date">Jan 2026 – Dec 2026 (Expected)</div>
-        <ul class="edu-bullets">
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label">03</p>
+    <h2 class="section-title">Education</h2>
+    <div class="timeline">
+
+      <div class="entry-card">
+        <div class="entry-header">
+          <span class="entry-title">Post-Graduate Certificate — Cybersecurity</span>
+          <span class="entry-date">Jan 2026 – Dec 2026 (Expected)</span>
+        </div>
+        <p class="entry-org">George Brown College · Toronto, ON</p>
+        <ul>
           <li>Configured network segmentation with firewall rules in lab environments to simulate secure network architectures.</li>
           <li>Used Wireshark to analyze network traffic and scan for vulnerabilities.</li>
           <li>Documented network configurations and security findings from hands-on lab exercises.</li>
         </ul>
       </div>
 
-      <div class="edu-card">
-        <div class="edu-degree">Bachelor of Science — Computer Engineering</div>
-        <div class="edu-school">University of Baguio · Philippines</div>
-        <div class="edu-date">Aug 2015 – May 2023</div>
-        <ul class="edu-bullets">
+      <div class="entry-card">
+        <div class="entry-header">
+          <span class="entry-title">Bachelor of Science — Computer Engineering</span>
+          <span class="entry-date">Aug 2015 – May 2023</span>
+        </div>
+        <p class="entry-org">University of Baguio · Philippines</p>
+        <ul>
           <li>Built an electronic testing system, web-based attendance monitoring system, and a quadruped robot.</li>
           <li>Developed system components using HTML, CSS, JavaScript, PHP, and electronic hardware.</li>
           <li>Led front-end design and contributed to back-end logic, database integration, testing, and debugging.</li>
@@ -225,34 +576,70 @@
     </div>
   </section>
 
-  <!-- ── Certifications ───────────────────────────────────── -->
+  <div class="section-divider"><hr></div>
+
+  <!-- CERTIFICATIONS -->
   <section id="certifications">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <h2>Certifications</h2>
-      <div class="section-line"></div>
-    </div>
+    <p class="section-label">04</p>
+    <h2 class="section-title">Certifications</h2>
     <div class="certs-grid">
-      <div class="cert-card"><div class="cert-icon">🔐</div><div class="cert-info"><div class="cert-name">Cisco CCNA</div><div class="cert-status">⏳ In Progress · Expected 2026</div></div></div>
-      <div class="cert-card"><div class="cert-icon">🛡️</div><div class="cert-info"><div class="cert-name">ISC2 Certified in Cybersecurity (CC)</div><div class="cert-status">⏳ In Progress · Expected 2026</div></div></div>
-      <div class="cert-card"><div class="cert-icon">✅</div><div class="cert-info"><div class="cert-name">CompTIA Security+</div><div class="cert-status">⏳ In Progress · Expected 2026</div></div></div>
-      <div class="cert-card"><div class="cert-icon">🌐</div><div class="cert-info"><div class="cert-name">CompTIA Network+</div><div class="cert-status">⏳ In Progress · Expected 2026</div></div></div>
-      <div class="cert-card"><div class="cert-icon">📊</div><div class="cert-info"><div class="cert-name">Splunk Core Certified Power User</div><div class="cert-status">⏳ In Progress · Expected 2026</div></div></div>
-      <div class="cert-card"><div class="cert-icon">⚔️</div><div class="cert-info"><div class="cert-name">EC-Council CEH</div><div class="cert-status">⏳ In Progress · Expected 2026</div></div></div>
-      <div class="cert-card"><div class="cert-icon">🏆</div><div class="cert-info"><div class="cert-name">ISC2 CISSP</div><div class="cert-status">⏳ In Progress · Expected 2026</div></div></div>
-      <div class="cert-card"><div class="cert-icon">💀</div><div class="cert-info"><div class="cert-name">Offensive Security OSCP</div><div class="cert-status">⏳ In Progress · Expected 2026</div></div></div>
-      <div class="cert-card"><div class="cert-icon">🔎</div><div class="cert-info"><div class="cert-name">CompTIA CySA+</div><div class="cert-status">⏳ In Progress · Expected 2026</div></div></div>
+
+      <div class="cert-card obtained">
+        <span class="cert-name">ISC2 Certified in Cybersecurity (CC)</span>
+        <span class="cert-status done">Obtained · April 2026</span>
+      </div>
+
+      <div class="cert-card">
+        <span class="cert-name">Cisco CCNA</span>
+        <span class="cert-status wip">In Progress · Expected 2026</span>
+      </div>
+
+      <div class="cert-card">
+        <span class="cert-name">CompTIA Security+</span>
+        <span class="cert-status wip">In Progress · Expected 2026</span>
+      </div>
+
+      <div class="cert-card">
+        <span class="cert-name">CompTIA Network+</span>
+        <span class="cert-status wip">In Progress · Expected 2026</span>
+      </div>
+
+      <div class="cert-card">
+        <span class="cert-name">Splunk Core Certified Power User</span>
+        <span class="cert-status wip">In Progress · Expected 2026</span>
+      </div>
+
+      <div class="cert-card">
+        <span class="cert-name">EC-Council CEH</span>
+        <span class="cert-status wip">In Progress · Expected 2026</span>
+      </div>
+
+      <div class="cert-card">
+        <span class="cert-name">ISC2 CISSP</span>
+        <span class="cert-status wip">In Progress · Expected 2026</span>
+      </div>
+
+      <div class="cert-card">
+        <span class="cert-name">Offensive Security OSCP</span>
+        <span class="cert-status wip">In Progress · Expected 2026</span>
+      </div>
+
+      <div class="cert-card">
+        <span class="cert-name">CompTIA CySA+</span>
+        <span class="cert-status wip">In Progress · Expected 2026</span>
+      </div>
+
     </div>
   </section>
 
-  <!-- ── Footer ───────────────────────────────────────────── -->
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-name">Eldrin David Asuncion</div>
-    <div class="footer-copy">// Cybersecurity Portfolio · Toronto, ON · 2026</div>
+    <a class="download-btn" href="Resume.docx" download="Eldrin_David_Asuncion_Resume.docx">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download Resume
+    </a>
+    <p class="footer-copy">Eldrin David Asuncion &nbsp;·&nbsp; // Cybersecurity Portfolio &nbsp;·&nbsp; Toronto, ON &nbsp;·&nbsp; 2026</p>
   </footer>
 
-  <!-- Scripts (data first, then main logic) -->
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>
